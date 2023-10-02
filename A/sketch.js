@@ -26,29 +26,24 @@ function drawHours(nowHour) {
   let hourAngleStart = (PI - hourAngleWidth) / 2;
   let hourAngleEnd = (PI + hourAngleWidth) / 2;
 
-  let hourArcCount = map(nowHour, 0, 23, 4, 1);
+  let hourX = random(0, width);
+  let hourY = random(-height / 4, 0);
+  let hourRotate = random(-PI / 4, PI / 4);
 
-  noStroke();
+  let hourColor = random([
+    color(255, 215, 0, 100),
+    color(71, 143, 128, 100),
+    color(139, 0, 0, 100),
+    color(55, 75, 152, 100),
+  ]);
 
-  for (let c = 0; c < hourArcCount; c += 1) {
-    let hourX = random(0, width);
-    let hourY = random(-height / 4, 0);
-    let hourRotate = random(-PI / 4, PI / 4);
-
-    let hourColor = random([
-      color(255, 215, 0, 100),
-      color(71, 143, 128, 100),
-      color(139, 0, 0, 100),
-      color(55, 75, 152, 100),
-    ]);
-    push();
-    translate(hourX, hourY);
-    rotate(hourRotate);
-    fill(hourColor);
-    stroke(0);
-    arc(0, 0, 4 * width, 4 * height, hourAngleStart, hourAngleEnd, PIE);
-    pop();
-  }
+  push();
+  translate(hourX, hourY);
+  rotate(hourRotate);
+  fill(hourColor);
+  stroke(0);
+  arc(0, 0, 4 * width, 4 * height, hourAngleStart, hourAngleEnd, PIE);
+  pop();
 }
 
 function drawMinutes(nowMinute) {
@@ -57,7 +52,7 @@ function drawMinutes(nowMinute) {
   let minuteRotate = random(-PI / 6, PI / 6);
   let minuteNumColumns = random([6, 10, 12, 15, 20]);
   let minuteNumRows = floor(nowMinute / minuteNumColumns) + 1;
-  let minuteHeight = (height - minuteStartY) / minuteNumRows / 4;
+  let minuteHeight = (height - minuteStartY) / minuteNumRows / 3;
 
   push();
   translate(minuteStartX, minuteStartY);
@@ -96,7 +91,7 @@ function drawSeconds(nowHour, nowSecond) {
   translate(secX, secY);
   rotate(secRotate);
 
-  strokeWeight(1);
+  strokeWeight(2);
   stroke(0);
   noFill();
   for (let l = 0; l < numLines; l++) {
@@ -104,13 +99,13 @@ function drawSeconds(nowHour, nowSecond) {
       l,
       0,
       numLines,
-      0.75 * SEC_DIAM + numLines * 4,
+      0.75 * SEC_DIAM + numLines * 6,
       0.75 * SEC_DIAM
     );
     arc(0, 0, diam, diam, 0, secAngle);
   }
 
-  strokeWeight(3);
+  strokeWeight(4);
   let secondArcColor = random(["gold", "pink", "darkred"]);
   stroke(secondArcColor);
   let diam = 0.75 * SEC_DIAM;
