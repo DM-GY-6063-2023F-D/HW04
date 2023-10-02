@@ -12,12 +12,18 @@ The background is based on the season in the northern hemisphere. Winter is blac
 ### Hour:
 There's a translucent triangle whose width is based on the current hour.
 
+![](./images/HW04A-00.jpg)
+
 ### Minute:
 The number of minutes is represented by a grid of randomly-colored squares.  
 The random seed for the ```draw()``` cycle is set by the current minute, this way the image changes every minute.
 
+![](./images/HW04A-01.jpg)
+
 ### Second:
 The number of seconds elapsed in the current minute is represented by an arc that grows from $0^\circ$ to $180^\circ$. The number of lines in the arc represents the hour.
+
+![](./images/HW04A-02.jpg)
 
 ## B: Drawing interface based on Kandinsky paintings
 ---
