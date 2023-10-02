@@ -77,6 +77,12 @@ function drawMinutes(nowMinute) {
   let mY = minuteNumRows * minuteHeight;
   stroke(0);
   line(-width, mY, 2 * width, mY);
+
+  for (let col = 1; col < minuteNumColumns; col += 1) {
+    let mX = col * minuteHeight;
+    line(mX, -height, mX, 2 * height);
+  }
+
   pop();
 }
 
@@ -114,7 +120,6 @@ function drawSeconds(nowHour, nowSecond) {
 }
 
 function draw() {
-  background(0);
   let nowSecond = second();
   let nowMinute = minute();
   let nowHour = hour();
